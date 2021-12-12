@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { addExperience } from '../../actions/profile';
 import { getTaskForCUrrentProfile } from '../../actions/task'
 import taskReducer from '../../reducers/taskReducer';
 
@@ -15,7 +14,7 @@ const initialState = {
   idToEdit: ''
 }
 
-const AddTasks = ({ addExperience, getTaskForCUrrentProfile, task: { taskToEdit, loading } }) => {
+const AddTasks = ({  getTaskForCUrrentProfile, task: { taskToEdit, loading } }) => {
   const navigate = useNavigate();
 
   const [formData, setFormData] = useState(initialState);
@@ -109,7 +108,6 @@ const AddTasks = ({ addExperience, getTaskForCUrrentProfile, task: { taskToEdit,
 };
 
 AddTasks.propTypes = {
-  addExperience: PropTypes.func.isRequired,
   getTaskForCUrrentProfile: PropTypes.func.isRequired
 };
 
@@ -117,4 +115,4 @@ const mapStateToProps = (state) => ({
   task: state.taskReducer
 })
 
-export default connect(mapStateToProps, { addExperience, getTaskForCUrrentProfile })(AddTasks);
+export default connect(mapStateToProps, {  getTaskForCUrrentProfile })(AddTasks);
